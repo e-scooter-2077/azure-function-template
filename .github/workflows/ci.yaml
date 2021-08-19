@@ -101,7 +101,6 @@ jobs:
           prerelease: ${{ needs.release-checks.outputs.is-prerelease }}
           files: |
             LICENSE
-            ${{ env.OUTPUT_DIR }}/*.nupkg
           title: ${{ env.RELEASE_PREFIX }} ${{ needs.release-checks.outputs.version }}
           draft: false
       - name: Setup .NET Core SDK v3
