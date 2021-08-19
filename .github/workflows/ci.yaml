@@ -5,6 +5,8 @@ env:
   DOTNET_VERSION: 5.0.x
   RELEASE_PREFIX: Azure Function Template
   AZURE_FUNCTIONAPP_NAME: your-azure-app-name
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 
 on:
@@ -100,7 +102,7 @@ jobs:
             ${{ env.OUTPUT_DIR }}/*.nupkg
           title: ${{ env.RELEASE_PREFIX }} ${{ needs.release-checks.outputs.version }}
           draft: false
-      - name: Setup .NET
+      - name: Setup .NET Core SDK v${{ env.DOTNET_VERSION }}
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
