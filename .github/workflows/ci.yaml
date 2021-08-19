@@ -2,8 +2,6 @@ name: "Build"
 
 env:
   OUTPUT_DIR: publish
-  DOTNET_VERSION: 5.0.x
-  FUNCTIONS_WORKER_RUNTIME: dotnet-isolated
   RELEASE_PREFIX: Azure Function Template
   AZURE_FUNCTIONAPP_NAME: your-azure-app-name
   DOTNET_NOLOGO: true
@@ -62,11 +60,14 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Setup .NET Core SDK v${{ env.DOTNET_VERSION }}
+    - name: Setup .NET Core SDK v3
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
-
+        dotnet-version: 3.x
+    - name: Setup .NET Core SDK v5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
     - name: Cache nuget packages
       uses: actions/cache@v2
       with:
@@ -103,10 +104,14 @@ jobs:
             ${{ env.OUTPUT_DIR }}/*.nupkg
           title: ${{ env.RELEASE_PREFIX }} ${{ needs.release-checks.outputs.version }}
           draft: false
-      - name: Setup .NET Core SDK v${{ env.DOTNET_VERSION }}
+      - name: Setup .NET Core SDK v3
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+          dotnet-version: 3.x
+      - name: Setup .NET Core SDK v5.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
       - name: Deploy Function on Azure
         uses: Azure/functions-action@v1
         with:
