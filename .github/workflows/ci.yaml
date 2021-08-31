@@ -82,6 +82,7 @@ jobs:
     - name: Run unit tests
       run: dotnet test --no-build -c "${{ env.BUILD_CONFIGURATION }}" --output "${{ env.OUTPUT_DIR }}"
     - name: Upload artifacts
+      if: ${{ needs.release-checks.outputs.should-release == 'true' }}
       uses: actions/upload-artifact@v2
       with:
         name: ${{ env.RELEASE_PREFIX }} Artifacts
