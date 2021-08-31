@@ -81,6 +81,12 @@ jobs:
       run: dotnet build --no-restore -c "${{ env.BUILD_CONFIGURATION }}" --output "${{ env.OUTPUT_DIR }}"
     - name: Run unit tests
       run: dotnet test --no-build -c "${{ env.BUILD_CONFIGURATION }}" --output "${{ env.OUTPUT_DIR }}"
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ env.RELEASE_PREFIX }} Artifacts
+        path: "${{ env.OUTPUT_DIR }}"
+        
 
   release:
     if: ${{ needs.release-checks.outputs.should-release == 'true' }}
@@ -111,10 +117,15 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.x
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{ env.RELEASE_PREFIX }} Artifacts
+          path: "${{ env.OUTPUT_DIR }}"
       - name: Deploy Function on Azure
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: "./${{ env.OUTPUT_DIR }}"
+          package: "${{ env.OUTPUT_DIR }}"
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
     
