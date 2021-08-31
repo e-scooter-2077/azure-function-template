@@ -1,15 +1,24 @@
-using System.Collections.Generic;
-using System.Net;
-using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Http;
-using Microsoft.Extensions.Logging;
-
 namespace TemplateFunction
 {
+    using System.Net;
+    using Microsoft.Azure.Functions.Worker;
+    using Microsoft.Azure.Functions.Worker.Http;
+    using Microsoft.Extensions.Logging;
+
+    /// <summary>
+    /// My function.
+    /// </summary>
     public static class Function1
     {
+        /// <summary>
+        /// handles http requests.
+        /// </summary>
+        /// <param name="req">http request.</param>
+        /// <param name="executionContext">function execution context.</param>
+        /// <returns>http response.</returns>
         [Function("Function1")]
-        public static HttpResponseData Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req,
+        public static HttpResponseData Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req,
             FunctionContext executionContext)
         {
             var logger = executionContext.GetLogger("Function1");
