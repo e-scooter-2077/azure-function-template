@@ -116,5 +116,5 @@ jobs:
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
           package: "${{ env.OUTPUT_DIR }}"
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          publish: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
     
