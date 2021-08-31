@@ -115,6 +115,6 @@ jobs:
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: "${{ env.OUTPUT_DIR }}"
-          publish: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          package: "./${{ env.OUTPUT_DIR }}"
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
     
