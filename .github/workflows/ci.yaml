@@ -51,6 +51,8 @@ jobs:
           echo "::set-output name=should-release::${SHOULD_RELEASE}"
           echo "::set-output name=is-prerelease::${PRERELEASE}"
           echo "::set-output name=version::${ADAPTED_VERSION}"
+
+
   build:
     name: Build and Test
     runs-on: ubuntu-20.04
