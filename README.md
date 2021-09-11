@@ -10,3 +10,8 @@
 4. Setup the `release` environment
 5. Setup the `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` secret (you can put it as environment secret of the release environment) with the Publish Profile file content downloaded from the Azure Portal of the function
 6. Setup the CI `env` parameters `RELEASE_PREFIX` (any string will do) and `AZURE_FUNCTIONAPP_NAME` (the name of the function app on Azure)
+
+#Launch CI
+To trigge the CI for a release
+`git tag -a <v#.#.#> -m "v#.#.#"
+git push origin <v#.#.#>`
