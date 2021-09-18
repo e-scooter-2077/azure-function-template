@@ -3,9 +3,9 @@
 * After using the template, rename the solution with the name of your Function or Function App.
 * Create an Azure Function project inside the solution and implement it.
 * Setup on [Azure Portal](https://portal.azure.com/#home) the required resources:
-    *. A resource group
-    *. A storage account
-    *. A function app with .NET runtime and other configuration (function version required is 3)
+  * A resource group
+  * A storage account
+  * A function app with .NET runtime and other configuration (function version required is 3)
 * Change the runtime version from `dotnet` to `dotnet-isolated` with this command, run it in the Azure CLI or **Azure Cloud Shell**:
 ```
 az functionapp config appsettings set --name <your-azure-app-name> --resource-group <your-resource-group> --settings FUNCTIONS_WORKER_RUNTIME=dotnet-isolated
