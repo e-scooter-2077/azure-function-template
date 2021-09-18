@@ -1,14 +1,16 @@
 <Project>
- <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
-    <OutputType>Exe</OutputType>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SolutionDir)\.stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 </Project>
