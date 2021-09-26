@@ -2,6 +2,13 @@
 ## Quickstart
 * After using the template, rename the solution with the name of your Function or Function App.
 * Create an Azure Function project inside the solution and implement it.
+* Add the code below to the function's `.csproj` file, substituting `path-to-repository-root` with the relative path to the root of the repository (where the `.stylecop.json` file is located).
+If done correctly, you should see the `.stylecop.json` file imported inside the project in Visual Studio
+```xml
+<PropertyGroup>
+  <RootFolder>path-to-repository-root</RootFolder>
+</PropertyGroup>
+```
 * Setup on [Azure Portal](https://portal.azure.com/#home) the required resources:
   * A resource group
   * A storage account
